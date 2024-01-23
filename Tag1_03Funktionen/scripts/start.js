@@ -1,44 +1,44 @@
 function init() {
    
-    console.log(crazy().myFunc());
 
-    /*
-    const demoList = [4, 3, 5, 10, 7, 5, 11, 19, 2];
-    console.log(demoList.filter(number => number < 10));
-    console.log(demoList.filter(MyFilter));
-    //console.log(sinnDesLebens()());
-      */  
-}
+    // Ankerelement holen indem die Tabelle eingehängt wird
+    let divElement = document.getElementById("MyTable");
+    divElement.innerHTML = "";
 
-function MyFilter (number) {
-    return number < 10;
+    let tableElement = document.createElement("TABLE");
+    divElement.append(tableElement);
 
-}
+    tableElement.setAttribute("border", "1");
 
+    let tbodyElement = document.createElement("TBODY");
+    tableElement.append(tbodyElement);
 
+    for(let zeile = 0; zeile < 3; zeile ++) {
 
+        let trElement = document.createElement("TR");
+        tbodyElement.append(trElement);
+        if(zeile % 2 == 0)
+            trElement.style.backgroundColor = "yellow";
 
-function sinnDesLebens() {
-    let y = 100;
-        var x =  ()=> 37.11 + y;
-        sqr = input => input * input;
-        sum = (a,b) => a + b;
-        y = 1000;
-        return x;
-}
+        for(let spalte = 0; spalte < 2; spalte ++) {
+            let tdElement = document.createElement("TD");
+            trElement.append(tdElement);
 
-function sqr(x) {
-    return x * x;
-}
+            let textNode = document.createTextNode(`Zeile ${zeile}, Spalte ${spalte}`);
+            tdElement.append(textNode);
+        }
 
-
-function crazy () {
-    var inner =100;
-
-    var myFunc = function() {
-        console.log("Aber hallo");
     }
-    
-    return {inner: inner, myFunc:myFunc};
+
+    // alt und doof
+    /*let liste = tableElement.getElementsByTagName("TD");
+    for(let element in liste ) {
+        console.log(liste[element]);
+    }
+    */
+
+    // neu und gut
+    let treffer = document.querySelector("#MyTable");
+
 }
 
