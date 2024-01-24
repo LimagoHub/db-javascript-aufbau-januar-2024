@@ -30,13 +30,20 @@ class Menu {
         this.ulElement = document.createElement("UL");
         this.ulElement.style.display="none";
 
-        this.liElement.addEventListener("click",function(e){
-            // this = Reference auf das aulösende Element
-        });
+        var help = this.ulElement;
 
         this.liElement = document.createElement("LI");
         this.liElement.appendChild(document.createTextNode(label));
-       
+        this.liElement.addEventListener(
+                "click", 
+                function(e){
+                    this.parentNode.querySelectorAll("UL").forEach(element => {
+                        element.style.display="none";
+                     }
+                    );
+                    help.style.display = "";
+                }
+        );
     }
     addMenuItem(menuItem) {
         this.ulElement.appendChild(menuItem.liElement);
@@ -49,7 +56,7 @@ class MenuItem {
     constructor(label, callback) {
         this.liElement = document.createElement("LI");
         this.liElement.appendChild(document.createTextNode(label));
-        
+        this.liElement.addEventListener("click", callback);
     }
 }
 
